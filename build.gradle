@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    // Checker Framework pluggable type-checking
+    id 'org.checkerframework' version '0.6.25'
+}
+
+group 'ece654.fan.cfg-parity-analysis'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+
+apply plugin: 'org.checkerframework'
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
