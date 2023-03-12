@@ -9,7 +9,7 @@ I implemented a static Parity analysis tool for the Java programming language on
 
 ## Lattice
 ```mermaid
-  graph TD;
+  graph DT;
   even-->top;
   odd-->top;
   bottom-->even;
