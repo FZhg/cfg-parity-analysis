@@ -51,6 +51,8 @@ Return  $\bot$ no matter the operands are.
 ## Transfer Function, $f$
 
 $$f(n: Integer Literal) = \sigma[n \mapsto \alpha_{int}(n)]$$
+
+
 $$f(a = b: Assignment) =  \sigma[\sigma(a) \mapsto \sigma(b)]$$
 
 
