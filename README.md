@@ -216,7 +216,7 @@ In this way, I can use the concrete values to first calculate the result for int
 
 Float and Double can have parity too, when their decimal parts are zeros. 
 
-My implementation will return $\top$ for short and long integer literals. But I could get their parity. 
+My implementation will return $\bot$ for short and long integer literals. But I could get their parity. 
 
 
 # Correctness
