@@ -7,6 +7,12 @@ You can read this file as a Readme Github Page at [https://github.com/FZhg/cfg-p
 # CI Execution of Test Cases
 You can see the output of CI execution at [here](testcase)
 
+
+| Testcase Source Code                                                 | Testcase CFG pdf                                                                             |
+|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| [Straightline](testcase/Straightline/Straightline.java)              | [Straightline pdf](testcase/Straightline/Straightline-straightline-int,int.dot.pdf)          |
+| [Control Structure](testcase/ControlStructure/ControlStructure.java) | [Control Structure pdf](testcase/ControlStructure/ControlStructure-controlStructure.dot.pdf) |
+
 # Observation on the [Dataflow Project of the Checker Framework](https://checkerframework.org/manual/checker-framework-dataflow-manual.pdf).
 
 The developers who wants to use the Dataflow library should be careful to override their own `object.equals` and `object.hashcode` methods for the `Store`. (I had a bug because of this!)
@@ -125,7 +131,7 @@ $$
 
 
 For all other expression (`String`, `Double`),
-$$\sigma_0[exp] = \bot$$.
+$$\sigma_0(exp) = \bot$$.
 
 ## Forward Analysis
 
