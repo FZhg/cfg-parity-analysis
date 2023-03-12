@@ -21,10 +21,10 @@ graph BT;
 ## Abstract Functions, $\alpha$
 
 ### Integer
-$$ \alpha(n: Integer Literal)  =
+$$ \alpha_{int}(n: Integer Literal)  =
 \begin{cases}
-Even & if n is Even \\
-Odd & if n is Odd   \\
+Even & \text{n is Even} \\
+Odd &  \text{n is Odd}   \\
 \end{cases} $$
 
 ### Integer Addition and Subtraction
@@ -50,7 +50,8 @@ Return  $\bot$ no matter the operands are.
 
 ## Transfer Function, $f$
 
-$$f(n: Integer Literal) = \sigma[n -> alpha]$$
+$$f(n: Integer Literal) = \sigma[n \mapsto \alpha_{int}(n)]$$
+$$f(a = b: Assignment) =  \sigma[\sigma(a) \mapsto \sigma(b)]$$
 
 
 
