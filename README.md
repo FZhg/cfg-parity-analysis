@@ -9,11 +9,11 @@ I implemented a static Parity analysis tool for the Java programming language on
 
 ## Lattice
 ```mermaid
-  graph TD;
-      top<--even;
-      top<--odd;
-      even<--bottom;
-      odd<--bottom;
+  graph Lattice;
+  bottom --> even;
+  bottom --> odd;
+  even --> top;
+  odd --> top;
 ```
 
 # References
