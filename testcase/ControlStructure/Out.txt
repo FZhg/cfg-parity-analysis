@@ -1,0 +1,79 @@
+16 -> 17 EACH_TO_EACH
+17 -> 18 EACH_TO_EACH
+18 -> 22 THEN_TO_BOTH
+18 -> 24 ELSE_TO_BOTH
+22 -> 25 EACH_TO_EACH
+24 -> 25 EACH_TO_EACH
+25 -> 14 EACH_TO_EACH
+
+16:
+Process order: 1
+TransferInput#54
+Before:   parity = {}
+~~~~~~~~~
+<entry>
+
+17:
+Process order: 2
+TransferInput#55
+Before:   parity = {}
+~~~~~~~~~
+a   [ VariableDeclaration ]
+1   [ IntegerLiteral ]    > odd
+a = 1   [ Assignment ]    > odd
+b   [ VariableDeclaration ]
+a   [ LocalVariable ]    > odd
+1   [ IntegerLiteral ]    > odd
+(a == 1)   [ EqualTo ]
+~~~~~~~~~
+AnalysisResult#9
+After:   parity = {a=odd}
+
+18:
+Process order: 3
+TransferInput#64
+Before:   parity = {a=odd}
+~~~~~~~~~
+ConditionalBlock: then: 22, else: 24
+
+22:
+Process order: 4
+TransferInput#66
+Before:   parity = {a=odd}
+~~~~~~~~~
+b   [ LocalVariable ]
+4   [ IntegerLiteral ]
+b = 4   [ Assignment ]
+~~~~~~~~~
+AnalysisResult#11
+After:   parity = {a=odd, b=even}
+
+24:
+Process order: 5
+TransferInput#67
+Before:   parity = {a=odd}
+~~~~~~~~~
+b   [ LocalVariable ]
+6   [ IntegerLiteral ]
+b = 6   [ Assignment ]
+~~~~~~~~~
+AnalysisResult#13
+After:   parity = {a=odd, b=even}
+
+25:
+Process order: 6
+TransferInput#77
+Before:   parity = {a=odd, b=even}
+~~~~~~~~~
+b   [ LocalVariable ]
+return b   [ Return ]
+~~~~~~~~~
+AnalysisResult#15
+After:   parity = {a=odd, b=even}
+
+14:
+Process order: 7
+TransferInput#81
+Before:   parity = {a=odd, b=even}
+~~~~~~~~~
+<exit>

@@ -5,6 +5,7 @@ I implemented a static parity analysis tool for the Java programming language on
 You can read this file as a Readme Github Page at [https://github.com/FZhg/cfg-parity-analysis](https://github.com/FZhg/cfg-parity-analysis).
 
 # CI Execution of Test Cases
+You can see the output of CI execution at [here]()
 
 # Observation on the [Dataflow Project of the Checker Framework](https://checkerframework.org/manual/checker-framework-dataflow-manual.pdf).
 
@@ -49,7 +50,7 @@ $$
 
 
 |        | $\bot$ | Even   | Odd    | $\top$ |
-| ------ | ------ | ------ | ------ | ------ |
+|--------|--------|--------|--------|--------|
 | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ |
 | Even   | $\bot$ | Even   | Odd    | $\top$ |
 | Odd    | $\bot$ | Odd    | Even   | $\top$ |
@@ -59,11 +60,11 @@ $$
 
 
 |        | $\bot$ | Even   | Odd    | $\top$ |
-| ------ | ------ | ------ | ------ | ------ |
+|--------|--------|--------|--------|--------|
 | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ |
-| Even   | $\bot$ | Even   | Even   | $\top$ |
+| Even   | $\bot$ | Even   | Even   | Even   |
 | Odd    | $\bot$ | Even   | Odd    | $\top$ |
-| $\top$ | $\bot$ | $\top$ | $\top$ | $\top$ |
+| $\top$ | $\bot$ | Even   | $\top$ | $\top$ |
 
 ### Integer Division
 
@@ -95,6 +96,11 @@ $$
 f(a \div b: Integer Division) =  \sigma[\sigma(a \div b) \mapsto \top)]
 $$
 
+
+$$
+f(a \% b: Integer Modulus) =  \sigma[\sigma(a \% b) \mapsto \top)]
+$$
+
 $$
 f(+ a : Integer Plus) =  \sigma[\sigma(+a) \mapsto \sigma(a)]
 $$
@@ -111,12 +117,15 @@ $$
 
 ## Initial Dataflow Information Assumptions, $\sigma_0$
 
-For all parameters and local variables, 
+For all parameters , 
 
 $$
 \sigma_0(x) = \top
 $$
 
+
+For all other expression (`String`, `Double`),
+$$\sigma_0[exp] = \bot$$.
 
 ## Forward Analysis
 
@@ -177,9 +186,8 @@ $$ f(exp1 == exp2: Equal To)_{FalseBranch} = \sigma$$
 $$ f(exp1 != exp2: Unequal To)_{TrueBranch} = \sigma$$
 $$ f(exp1 != exp2: Unequal To)_{FalseBranch} = \sigma[\sigma(exp1) \mapsto \sigma(exp2), \sigma(exp2) \mapsto \sigma(exp1)]$$
 
-I need also to add the following to my initial dataflow information assumption.
-For all other expression other than local variables and parameters, 
-$$\sigma_0[exp] = \bot$$.
+
+
 
 
 For example, if  exp1 and epx2 are integer literals,  variables or addition of them, we can get their parity though transfer function defined earlier. 
@@ -200,8 +208,17 @@ In this way, I can use the concrete values to first calculate the result for int
 
 ## Float, Double, Short and Long Literal
 
+Float and Double can have parity too, when their decimal parts are zeros. 
 
-# False Positive and False Negative
+My implementation will return $\top$ for short and long integer literals. But I could get their parity. 
+
+
+# Correctness
+I don't false positive and negative should apply to Parity Analysis. Since we are not testing a hypothesis. 
+
+My implementation should be always correct. Because the dataflow information only get coarser. It only goes toward the trivial answer. Thus, it should be always correct.
+
+
 
 # Credit
 

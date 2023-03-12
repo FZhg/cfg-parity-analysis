@@ -45,6 +45,7 @@ public class Parity implements AbstractValue<Parity> {
     if(first.isOdd() && second.isOdd()){
       return odd;
     }
+
     return  top;
   };
 

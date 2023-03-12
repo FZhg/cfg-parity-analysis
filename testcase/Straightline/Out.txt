@@ -1,0 +1,112 @@
+12 -> 13 EACH_TO_EACH
+13 -> 14 EACH_TO_EACH
+14 -> 15 EACH_TO_EACH
+14 -> 11 ArithmeticException
+15 -> 16 EACH_TO_EACH
+16 -> 17 EACH_TO_EACH
+16 -> 11 ArithmeticException
+17 -> 10 EACH_TO_EACH
+
+12:
+Process order: 1
+TransferInput#141
+Before:   parity = {a=T, b=T}
+~~~~~~~~~
+<entry>
+
+13:
+Process order: 2
+TransferInput#142
+Before:   parity = {a=T, b=T}
+~~~~~~~~~
+c   [ VariableDeclaration ]
+d   [ VariableDeclaration ]
+4   [ IntegerLiteral ]    > even
+d = 4   [ Assignment ]    > even
+e   [ VariableDeclaration ]
+5789   [ IntegerLiteral ]    > odd
+e = 5789   [ Assignment ]    > odd
+f   [ VariableDeclaration ]
+a   [ LocalVariable ]    > T
+d   [ LocalVariable ]    > even
+(a + d)   [ NumericalAddition ]    > T
+f = (a + d)   [ Assignment ]    > T
+g   [ VariableDeclaration ]
+e   [ LocalVariable ]    > odd
+33247   [ IntegerLiteral ]    > odd
+(e - 33247)   [ NumericalSubtraction ]    > T
+g = (e - 33247)   [ Assignment ]    > T
+h   [ VariableDeclaration ]
+2   [ IntegerLiteral ]    > even
+b   [ LocalVariable ]    > T
+(2 * b)   [ NumericalMultiplication ]    > even
+h = (2 * b)   [ Assignment ]    > even
+i   [ VariableDeclaration ]
+3   [ IntegerLiteral ]    > odd
+e   [ LocalVariable ]    > odd
+(3 * e)   [ NumericalMultiplication ]    > odd
+i = (3 * e)   [ Assignment ]    > odd
+j   [ VariableDeclaration ]
+e   [ LocalVariable ]    > odd
+3   [ IntegerLiteral ]    > odd
+~~~~~~~~~
+AnalysisResult#7
+After:   parity = {a=T, b=T, d=even, e=odd, f=T, g=T, h=even, i=odd}
+
+14:
+Process order: 3
+TransferInput#174
+Before:   parity = {a=T, b=T, d=even, e=odd, f=T, g=T, h=even, i=odd}
+~~~~~~~~~
+(e / 3)   [ IntegerDivision ]
+
+15:
+Process order: 4
+TransferInput#177
+Before:   parity = {a=T, b=T, d=even, e=odd, f=T, g=T, h=even, i=odd}
+~~~~~~~~~
+(e / 3)   [ IntegerDivision ]
+j = (e / 3)   [ Assignment ]
+k   [ VariableDeclaration ]
+d   [ LocalVariable ]
+2   [ IntegerLiteral ]
+~~~~~~~~~
+AnalysisResult#9
+After:   parity = {a=T, b=T, d=even, e=odd, f=T, g=T, h=even, i=odd, j=T}
+
+11:
+Process order: 8
+TransferInput#191
+Before:   parity = {a=T, b=T, d=even, e=odd, f=T, g=T, h=even, i=odd, j=T}
+~~~~~~~~~
+<exceptional-exit>
+
+16:
+Process order: 5
+TransferInput#186
+Before:   parity = {a=T, b=T, d=even, e=odd, f=T, g=T, h=even, i=odd, j=T}
+~~~~~~~~~
+(d % 2)   [ IntegerRemainder ]
+
+17:
+Process order: 6
+TransferInput#189
+Before:   parity = {a=T, b=T, d=even, e=odd, f=T, g=T, h=even, i=odd, j=T}
+~~~~~~~~~
+(d % 2)   [ IntegerRemainder ]
+k = (d % 2)   [ Assignment ]
+l   [ VariableDeclaration ]
+"string"   [ StringLiteral ]
+l = "string"   [ Assignment ]
+k   [ LocalVariable ]
+return k   [ Return ]
+~~~~~~~~~
+AnalysisResult#11
+After:   parity = {a=T, b=T, d=even, e=odd, f=T, g=T, h=even, i=odd, j=T, k=T, l=-}
+
+10:
+Process order: 7
+TransferInput#200
+Before:   parity = {a=T, b=T, d=even, e=odd, f=T, g=T, h=even, i=odd, j=T, k=T, l=-}
+~~~~~~~~~
+<exit>

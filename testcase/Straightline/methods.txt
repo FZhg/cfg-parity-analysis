@@ -1,0 +1,5 @@
+<Straightline::straightline(int,int)::43>	testcases/Straightline//Straightline-straightline-int,int.dot
+<Straightline::straightline(int,int)::43>	testcases/Straightline//Straightline-straightline-int,int.dot
+<Straightline::straightline(int,int)::43>	testcase/Straightline//Straightline-straightline-int,int.dot
+<Straightline::straightline(int,int)::43>	testcase/Straightline//Straightline-straightline-int,int.dot
+<Straightline::straightline(int,int)::43>	testcase/Straightline//Straightline-straightline-int,int.dot

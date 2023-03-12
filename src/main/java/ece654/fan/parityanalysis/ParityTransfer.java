@@ -1,13 +1,14 @@
 package ece654.fan.parityanalysis;
 
-import java.util.List;
-
 import org.checkerframework.dataflow.analysis.ForwardTransferFunction;
 import org.checkerframework.dataflow.analysis.RegularTransferResult;
 import org.checkerframework.dataflow.analysis.TransferInput;
 import org.checkerframework.dataflow.analysis.TransferResult;
 import org.checkerframework.dataflow.cfg.UnderlyingAST;
 import org.checkerframework.dataflow.cfg.node.*;
+
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class ParityTransfer
         extends AbstractNodeVisitor<
@@ -18,7 +19,12 @@ public class ParityTransfer
   @Override
   public ParityStore initialStore(
           UnderlyingAST underlyingAST, List<LocalVariableNode> parameters) {
-    ParityStore store = new ParityStore();
+
+    LinkedHashMap<Node, Parity> initialDataflowInformation = new LinkedHashMap<>();
+    for (LocalVariableNode parameter : parameters){
+      initialDataflowInformation.put(parameter, Parity.top);
+    }
+    ParityStore store = new ParityStore(initialDataflowInformation);
     return store;
   }
 
@@ -90,6 +96,21 @@ public class ParityTransfer
     return arithmeticOperation(n, inFlow, Parity.multiply);
   }
 
+
+  @Override
+  public TransferResult<Parity, ParityStore> visitIntegerDivision(IntegerDivisionNode n, TransferInput<Parity, ParityStore> inFlow) {
+    ParityStore outFlowStore = inFlow.getRegularStore();
+    outFlowStore.setInformation(n, Parity.top);
+    return new RegularTransferResult<>(Parity.top, outFlowStore);
+  }
+
+  @Override
+  public TransferResult<Parity, ParityStore> visitIntegerRemainder(IntegerRemainderNode n, TransferInput<Parity, ParityStore> inFlow) {
+    ParityStore outFlowStore = inFlow.getRegularStore();
+    outFlowStore.setInformation(n, Parity.top);
+    return new RegularTransferResult<>(Parity.top, outFlowStore);
+  }
+
   /**
    * Plus or Minus doesn't change the parity.
    */
@@ -111,6 +132,7 @@ public class ParityTransfer
     outFlowStore.setInformation(n, parity);
     return new RegularTransferResult<>(parity, outFlowStore);
   }
+
 
 
 }

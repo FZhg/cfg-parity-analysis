@@ -31,8 +31,8 @@ public class ParityStore implements Store<ParityStore> {
     if (contents.containsKey(n)) {
       return contents.get(n);
     }
-    // for parameters and initialized local variables, assign them a TOP
-    return Parity.top;
+    // for local variables and other expressions, assign them a bottom
+    return Parity.bottom;
   }
 
   public void mergeInformation(Node n, Parity otherAbstractValue) {

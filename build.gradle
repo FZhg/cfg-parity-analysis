@@ -25,6 +25,8 @@ def checkerframework_local = false  // Set this variable to [true] while using l
 
 
 dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+
     // This dependency is found on compile classpath of this component and consumers.
     if (checkerframework_local) {
         implementation files('${CHECKERFRAMEWORK}/checker/dist/checker-qual.jar')
@@ -48,7 +50,8 @@ dependencies {
 }
 
 test {
-    inputs.files("testscases/")
+    useJUnitPlatform()
+    inputs.files("testscase/")
     if (!JavaVersion.current().java9Compatible) {
         jvmArgs "-Xbootclasspath/p:${configurations.errorproneJavac.asPath}"
     } else {
