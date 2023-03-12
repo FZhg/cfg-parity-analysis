@@ -10,10 +10,10 @@ I implemented a static Parity analysis tool for the Java programming language on
 ## Lattice
 ```mermaid
   graph TB;
-  even-->top;
-  odd-->top;
-  bottom-->even;
-  bottom-->odd;
+  top---even;
+  top---odd;
+  bottom---even;
+  bottom---odd;
 ```
 
 # References
