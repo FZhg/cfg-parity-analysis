@@ -5,7 +5,7 @@ I implemented a static parity analysis tool for the Java programming language on
 You can read this file as a Readme Github Page at [https://github.com/FZhg/cfg-parity-analysis](https://github.com/FZhg/cfg-parity-analysis).
 
 # CI Execution of Test Cases
-You can see the output of CI execution at [here]()
+You can see the output of CI execution at [here](testcase)
 
 # Observation on the [Dataflow Project of the Checker Framework](https://checkerframework.org/manual/checker-framework-dataflow-manual.pdf).
 
