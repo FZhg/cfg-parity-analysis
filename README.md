@@ -220,7 +220,7 @@ My implementation will return $\top$ for short and long integer literals. But I 
 
 
 # Correctness
-I don't false positive and negative should apply to Parity Analysis. Since we are not testing a hypothesis. 
+I don't think false positive and negative should apply to Parity Analysis. Since we are not testing a hypothesis. 
 
 My implementation should be always correct. Because the dataflow information only get coarser. It only goes toward the trivial answer. Thus, it should be always correct.
 
