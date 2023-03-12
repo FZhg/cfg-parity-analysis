@@ -4,16 +4,16 @@ I implemented a static Parity analysis tool for the Java programming language on
 * A lattice ($L$, $\sqsubseteq$)
 * An abstraction function $\alpha$
 * A transfer function $f$
-* An initial dataflow analysis assumptions, $sigma_0$
+* An initial dataflow analysis assumptions, $\sigma_0$
 
 
 ## Lattice
 ```mermaid
   graph TD;
-      $\top$-->EVEN;
-      $\top$-->ODD;
-      EVEN-->$\bot$;
-      ODD-->$\bot$;
+      top-->even;
+      top-->odd;
+      even-->bottom;
+      odd-->bottom;
 ```
 
 # References
