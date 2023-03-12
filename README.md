@@ -12,8 +12,8 @@ I implemented a static Parity analysis tool for the Java programming language on
   graph TB;
   top---even;
   top---odd;
-  bottom---even;
-  bottom---odd;
+  even---bottom;
+  odd---bottom;
 ```
 
 # References
