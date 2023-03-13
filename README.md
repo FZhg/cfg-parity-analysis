@@ -133,12 +133,11 @@ $$
 For all other expression (`String`, `Double`),
 $$\sigma_0(exp) = \bot$$.
 
-## Forward Analysis
-
-Parity Analysis  is neither must or may analysis. Unlike Live Variable Analysis, which maps a program point to a set of variables, and Reaching Definitions,  which maps a program point to a set of definitions,  Parity Analysis maps a program point to a map of variables and their parity. In other words, the abstract state lattice of Parity Analysis is not a powerset.
-
+## Forward and Must Analysis
 Parity Analysis is a forward Analysis. Because It uses the dataflow information from predecessors to compute the dataflow information after the current program point.
 Any change to the dataflow information, the work-list algorithm have to update the successor's dataflow information.
+
+Parity Analysis is a Must Analysis. Because it always produce a analysis that must be true.
 
 # AST or CFG?
 
